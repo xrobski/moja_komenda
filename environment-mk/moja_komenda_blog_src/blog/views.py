@@ -10,7 +10,7 @@ posts =[
     },
     {
         'author': 'Michał Chrząszcz',
-        'title': 'Rozprułem się po raz 1',
+        'title': 'Nigdy się nie rozprułem',
         'content': 'Pamiętam to jak wczoraj..',
         'date_posted': 'Listopad 28, 2019'
     }
@@ -23,4 +23,4 @@ def home(request):
     return render(request, 'blog/home.html', context)
 
 def about(request):
-    return HttpResponse('<h1>O komendzie</h1>')
+    return render(request, 'blog/about.html', {'title': 'About'})
