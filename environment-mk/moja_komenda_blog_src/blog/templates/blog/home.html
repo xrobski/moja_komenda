@@ -1,8 +1,20 @@
 {% extends "blog/base.html" %}
 {% block content %}
-  {% for post in posts %}
-    <h1>{{ post.title }}</h1>
-    <p>By {{ post.author }} on {{ post.date_posted }}</p>
-    <p>{{ post.content }}</p>
-  {% endfor %}
+<div class="card-deck">
+{% for user in users %}
+  {% if not user.is_superuser %}
+    <div class="card" style="width: 7rem;">
+      <img class="card-img-top rounded-top" src="{{ user.profile.image.url }}" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-tittle">{{ user.first_name }} {{ user.last_name }}</h5>
+        <p class="card-text"> Zeznania </p>
+        <a href="about" class="btn btn-primary">Więcej..</a>
+        {% if forloop.counter == 3 %}
+          </div><div class="card-deck">
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}
+</div>
 {% endblock content %}
